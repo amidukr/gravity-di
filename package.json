@@ -1,0 +1,53 @@
+{
+  "name": "@amid.ukr/gravity-di",
+  "version": "0.0.1",
+  "description": "Gravity dependency injection framework",
+  "main": "dist/gravity-di.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist/**/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rebuild": "npm run clean && npm run build",
+    "clean": "rimraf dist",
+    "build": "npm run build:tsc:d && npm run build:webpack",
+    "build:tsc": "tsc",
+    "build:tsc:d": "tsc --emitDeclarationOnly",
+    "build:webpack": "webpack --mode=production --node-env=production",
+    "build:webpack-dev": "webpack --mode=development",
+    "build:webpack-prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amidukr/gravity-di.git"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "dependency-injection"
+  ],
+  "author": "Dmytro Brazhnuk <amid.ukr@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/amidukr/gravity-di/issues"
+  },
+  "homepage": "https://github.com/amidukr/gravity-di#readme",
+  "devDependencies": {
+    "@types/bluebird": "^3.5.36",
+    "@webpack-cli/generators": "^1.1.0",
+    "css-loader": "^6.7.1",
+    "lodash": "^4.17.21",
+    "mini-css-extract-plugin": "^2.2.0",
+    "prettier": "^2.6.1",
+    "rimraf": "^3.0.2",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.2",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  }
+}
