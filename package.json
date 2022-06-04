@@ -2,7 +2,7 @@
   "name": "@amid.ukr/gravity-di",
   "version": "0.0.1",
   "description": "Gravity dependency injection framework",
-  "main": "dist/index.js",
+  "main": "dist/gravity-di.js",
   "types": "dist/index.d.ts",
   "files": [
     "/dist/**/*"
@@ -11,8 +11,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "rebuild": "npm run clean && npm run build",
     "clean": "rimraf dist",
-    "build": "npm run build:tsc && npm run build:webpack",
+    "build": "npm run build:tsc:d && npm run build:webpack",
     "build:tsc": "tsc",
+    "build:tsc:d": "tsc --emitDeclarationOnly",
     "build:webpack": "webpack --mode=production --node-env=production",
     "build:webpack-dev": "webpack --mode=development",
     "build:webpack-prod": "webpack --mode=production --node-env=production",
