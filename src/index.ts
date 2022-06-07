@@ -5,4 +5,3 @@ export * from "./app/lookup/TypeIdentifier";
 export * from "./app/utils/BaseApplicationComponent";
 export * from "./app/utils/BasePlugin";
 export * from "./app/utils/LifecycleStage";
-

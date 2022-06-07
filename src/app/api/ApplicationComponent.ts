@@ -8,6 +8,7 @@ export interface ApplicationComponent {
   register?(application: ApplicationContainer): Promise<void> | void;
   autowire?(application: ApplicationContainer): void;
   start?(application: ApplicationContainer): Promise<void> | void;
+  startOrder?(): number;
   onApplicationStarted?(application: ApplicationContainer): void;
 }
 

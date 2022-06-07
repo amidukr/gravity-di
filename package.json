@@ -1,8 +1,8 @@
 {
   "name": "@amid.ukr/gravity-di",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Gravity dependency injection framework",
-  "main": "dist/gravity-di.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "/dist/**/*"
@@ -17,8 +17,7 @@
     "build:webpack": "webpack --mode=production --node-env=production",
     "build:webpack-dev": "webpack --mode=development",
     "build:webpack-prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "prettier": "prettier --write ./src ./*.json ./*js"
   },
   "repository": {
     "type": "git",
@@ -41,7 +40,7 @@
     "css-loader": "^6.7.1",
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.2.0",
-    "prettier": "^2.6.1",
+    "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.0",

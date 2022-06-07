@@ -1,4 +1,4 @@
-import { TYPE_ApplicationComponent } from "./api/ApplicationComponent";
+import { ApplicationComponent, TYPE_ApplicationComponent } from "./api/ApplicationComponent";
 import { BoundInterface, Introspection } from "./lookup/Introspection";
 import { TypeIdentifierAgument, typeIdentifierName } from "./lookup/TypeIdentifier";
 
@@ -16,6 +16,10 @@ export class ApplicationContainer {
   constructor(params: { parentContainer?: ApplicationContainer } = {}) {
     this.registerComponent(this);
     this.parentContainer = params?.parentContainer;
+  }
+
+  static getComponentStartOrder(component: ApplicationComponent): number {
+    return (component.startOrder && component.startOrder()) || 0;
   }
 
   private __lazyGetBoundInterfaceByName(name: string) {
@@ -56,7 +60,9 @@ export class ApplicationContainer {
 
     this.getComponentList(TYPE_ApplicationComponent, { searchParent: false }).forEach((x) => x.autowire && x.autowire(this));
 
-    await Promise.all(this.getComponentList(TYPE_ApplicationComponent, { searchParent: false }).map((x) => x.start && x.start(this)));
+    const startableList = this.getComponentList(TYPE_ApplicationComponent, { searchParent: false }).filter((x) => x.start);
+    startableList.sort((a, b) => ApplicationContainer.getComponentStartOrder(a) - ApplicationContainer.getComponentStartOrder(b));
+    await Promise.all(startableList.map((x) => x.start && x.start(this)));
 
     this.getComponentList(TYPE_ApplicationComponent, { searchParent: false }).forEach((x) => x.onApplicationStarted && x.onApplicationStarted(this));
 
